@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.AddProductGUI">
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@../style/style.css">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="672.0" prefWidth="310.0" styleClass="background" stylesheets="@../style/style.css">
+                     <children>
+                        <HBox alignment="TOP_RIGHT" prefHeight="124.0" prefWidth="310.0">
+                           <children>
+                              <Button focusTraversable="false" mnemonicParsing="false" onAction="#back" styleClass="transparent">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Images/arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="15.0" top="30.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <HBox prefHeight="100.0" prefWidth="200.0" />
+                              <ImageView fitHeight="106.0" fitWidth="139.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/coisinhaTop.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="97.0" prefWidth="310.0">
+                           <children>
+                              <Label prefHeight="34.0" prefWidth="225.0" styleClass="subtitle" stylesheets="@../style/style.css" text="Add Product">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label styleClass="lables" text="Please sign in to continue">
+                                 <VBox.margin>
+                                    <Insets left="15.0" top="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#openAndCloseTab" prefHeight="43.0" prefWidth="110.0" styleClass="buttons" text="Filter">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="110.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="lables" text="Product" />
+                              <HBox alignment="CENTER" prefHeight="110.0" prefWidth="177.0">
+                                 <children>
+                                    <ChoiceBox fx:id="cBoxProducts" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="310.0">
+                           <children>
+                              <JFXTextField fx:id="txtStock" focusColor="#ed892e" prefHeight="25.0" prefWidth="186.0" promptText="Stock" unFocusColor="BLACK" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="128.0" prefWidth="310.0">
+                           <children>
+                              <Button fx:id="btLogin" mnemonicParsing="false" onAction="#add" prefHeight="43.0" prefWidth="110.0" styleClass="buttons" text="Add" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="40.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox fx:id="filterTab" alignment="TOP_CENTER" prefHeight="480.0" prefWidth="310.0" style="-fx-background-color: #FFE7BDFF;" visible="false">
+               <StackPane.margin>
+                  <Insets top="270.0" />
+               </StackPane.margin>
+               <children>
+                  <Label style="-fx-text-fill: #4c556b;" stylesheets="@../style/style.css" text="Filter options" textFill="WHITE">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="99.0" prefWidth="310.0" />
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="310.0">
+                     <children>
+                        <JFXTextField fx:id="txtName" focusColor="#ed892e" prefHeight="25.0" prefWidth="186.0" promptText="Name" unFocusColor="BLACK" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label style="-fx-text-fill: #4c556b;" text="Category" textFill="WHITE" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="238.0">
+                           <children>
+                              <ChoiceBox fx:id="cBoxCategories" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="141.0" prefWidth="310.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#filter" prefHeight="43.0" prefWidth="110.0" styleClass="buttons" stylesheets="@../style/style.css" text="Filter" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

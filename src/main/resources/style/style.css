@@ -1,0 +1,130 @@
+.subtitle {
+    -fx-font-family: "Montserrat ExtraBold";
+}
+
+.title {
+    -fx-font-family: "Catalish Huntera";
+}
+
+.lables {
+    -fx-font-family: "Montserrat Regular";
+}
+
+
+.welcome-title {
+    -fx-background-color: linear-gradient(to right, #7150d2, #a55bfb);
+    -fx-background-radius: 0 25 25 0;
+}
+
+.welcome-back {
+    -fx-background-color: linear-gradient(to right, #f2c168, #c79c94);
+    -fx-background-radius: 0 25 25 0;
+}
+
+
+.background-color {
+    -fx-background-color: white;
+}
+
+.logout-button {
+    -fx-background-radius: 25;
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.light-blue {
+    -fx-background-color: #eefaff;
+}
+
+
+
+.radius-background {
+    -fx-background-color: white;
+    -fx-background-radius: 40;
+}
+
+.gray-radius-background {
+    -fx-background-color: #d2d2d2;
+    -fx-background-radius: 40;
+}
+
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.buttons {
+    -fx-background-radius: 20;
+    -fx-background-color: linear-gradient(to right, #edc35d, #e19f4b);
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(219, 2, 2, 0.2), 10, 0, 0, 1);
+}
+
+.dropdown-menu {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, .2), 10, 0, 0, 1);
+}
+
+.buttons:hover {
+    -fx-background-color: linear-gradient(to right, #ffc94a, #ffa839);
+    -fx-text-fill: #4a5466;
+}
+
+
+.red-buttons {
+    -fx-background-radius: 20;
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-text-fill: #e84949;
+    -fx-effect: dropshadow(gaussian, rgba(219, 2, 2, 0.1), 10, 0, 0, 1);
+}
+
+.blue-buttons {
+    -fx-background-radius: 20;
+    -fx-background-color: linear-gradient(to right, #a4d8ff, #7dc4ff);
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(2, 121, 219, 0.2), 10, 0, 0, 1);
+}
+
+
+
+.border-radius {
+    -fx-background-radius: 15;
+}
+
+
+.jfx-text-field {
+    -jfx-focus-color: linear-gradient(to right, #ffc356, #eea393);
+    -jfx-unfocus-color: black;
+}
+
+.jfx-password-field {
+    -jfx-focus-color: linear-gradient(to right, #ffc356, #eea393);
+    -jfx-unfocus-color: black;
+}
+
+
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #ffe7bd, #f6c5ba);
+    -fx-background-radius: 15px 15px 0px 0px;
+    -fx-padding: 5 0 7px 0;
+}
+
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 10px;
+    -fx-alignment: CENTER;
+}
+.table-row-cell:hover {
+    -fx-background-color: #93f9b911;
+    -fx-text-background-color: #142b3e;
+}
+

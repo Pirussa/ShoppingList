@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.EditProfileGUI">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="194.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right, #a4d8ff, #7dc4ff);;">
+               <children>
+                  <HBox prefHeight="167.0" prefWidth="95.0">
+                     <children>
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#back" styleClass="transparent">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" top="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children></HBox>
+                  <VBox prefHeight="167.0" prefWidth="120.0">
+                     <children>
+                        <HBox prefHeight="37.0" prefWidth="120.0" />
+                        <ImageView fitHeight="137.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/mostroFundoBranco.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children></HBox>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="61.0" prefWidth="310.0">
+               <children>
+                  <Label style="-fx-text-fill: #58a0de;" styleClass="subtitle" text="Personal Information">
+                     <HBox.margin>
+                        <Insets left="14.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="310.0">
+               <children>
+                  <Label styleClass="lables" text="Name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="80.0" prefWidth="66.0" />
+                  <TextField fx:id="txtName" alignment="CENTER_RIGHT" focusTraversable="false" onAction="#clearName" prefHeight="25.0" prefWidth="149.0" promptText="Pedro Monteiro" styleClass="transparent" />
+                  <Button mnemonicParsing="false" onAction="#familyOptions" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/setinha.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="310.0">
+               <children>
+                  <Label styleClass="lables" text="Email">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="80.0" prefWidth="46.0" />
+                  <TextField fx:id="txtEmail" alignment="CENTER_RIGHT" focusTraversable="false" onAction="#clearEmail" prefHeight="25.0" prefWidth="172.0" promptText="ampedro2003@gmail.com" styleClass="transparent" />
+                  <Button mnemonicParsing="false" onAction="#familyOptions" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/setinha.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="310.0">
+               <children>
+                  <Label styleClass="lables" text="Pin">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="80.0" prefWidth="126.0" />
+                  <PasswordField fx:id="txtPin" alignment="CENTER_RIGHT" focusTraversable="false" onAction="#clearPin" prefHeight="25.0" prefWidth="106.0" promptText="****" styleClass="transparent" />
+                  <Button mnemonicParsing="false" onAction="#familyOptions" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/setinha.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="310.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#save" prefHeight="43.0" prefWidth="110.0" styleClass="blue-buttons" text="Save" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

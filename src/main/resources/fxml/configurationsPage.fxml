@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.ConfigurationsPageGUI">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="167.0" prefWidth="310.0">
+               <children>
+                  <HBox prefHeight="167.0" prefWidth="95.0">
+                     <children>
+                        <Button focusTraversable="false" mnemonicParsing="false" onAction="#back" styleClass="transparent">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/arrow.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="15.0" top="30.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children></HBox>
+                  <VBox prefHeight="167.0" prefWidth="120.0">
+                     <children>
+                        <HBox prefHeight="51.0" prefWidth="107.0" />
+                        <ImageView fitHeight="141.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/mostroUser.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children></HBox>
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="310.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#editProfile" prefHeight="43.0" prefWidth="110.0" styleClass="buttons" text="Edit Profile" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="310.0" />
+            <HBox alignment="CENTER" prefHeight="10.0" prefWidth="310.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="286.0" styleClass="gray-radius-background" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="110.0">
+                     <children>
+                        <Label text="Dark Mode">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="119.0" />
+                  <JFXToggleButton onAction="#darkMode" text=" " />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="87.0">
+                     <children>
+                        <Label text="Family">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="155.0" />
+                  <Button mnemonicParsing="false" onAction="#familyOptions" styleClass="transparent">
+                     <graphic>
+                        <ImageView fitHeight="33.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/setinha.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="196.0" prefWidth="310.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#logOut" prefHeight="43.0" prefWidth="110.0" styleClass="red-buttons" text="Log out" textFill="#d34e4e">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#deleteAccount" prefHeight="43.0" prefWidth="154.0" styleClass="red-buttons" text="Delete Account" textFill="#d34e4e">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" style="-fx-background-color: #002C48;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.MainPageGUI">
+   <center>
+      <StackPane prefHeight="660.0" prefWidth="310.0" styleClass="background-color" stylesheets="@../style/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="660.0" prefWidth="0.0" styleClass="background" stylesheets="@../style/style.css">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#openTab" styleClass="transparent">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Images/BarrasMenu.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Button>
+                        <HBox alignment="CENTER_LEFT" prefHeight="173.0" prefWidth="310.0">
+                           <children>
+                              <Label styleClass="subtitle" text="Main List" textFill="#402525">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="40.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="480.0" prefWidth="310.0">
+                     <children>
+                        <TableView fx:id="tbProducts" prefHeight="428.0" prefWidth="300.0" styleClass="border-radius">
+                           <columns>
+                              <TableColumn fx:id="colCheckbox" prefWidth="48.0" text="Buy" />
+                              <TableColumn fx:id="colName" prefWidth="166.0" text="Name" />
+                              <TableColumn fx:id="colQuantiy" prefWidth="85.0" text="Quantity" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="72.0" prefWidth="310.0" />
+               </children>
+            </VBox>
+            <VBox fx:id="tab" prefHeight="660.0" prefWidth="287.0" style="-fx-background-color: #FFE7BDFF;" visible="false">
+               <StackPane.margin>
+                  <Insets right="50.0" />
+               </StackPane.margin>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="260.0">
+                     <children>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="185.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#closeTab" prefHeight="74.0" prefWidth="57.0" styleClass="transparent">
+                                 <graphic>
+                                    <ImageView fitHeight="36.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Images/BarrasMenu.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin></Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <ScrollPane prefHeight="617.0" prefWidth="260.0" style="-fx-background-color: #FFE7BDFF;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="603.0" prefWidth="260.0" style="-fx-background-color: #FFE7BDFF;">
+                           <children>
+                              <VBox prefHeight="568.0" prefWidth="260.0" style="-fx-background-color: #FFE7BDFF;">
+                                 <children>
+                                    <HBox fx:id="mainHBox" alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toMainPage" prefHeight="45.0" prefWidth="250.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/mainPageBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toMeatFish" prefHeight="45.0" prefWidth="250.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/meatFishBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toDairy" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/dairyBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toCerealsBake" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/cerealsBakeryBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toFruitsAndVeggies" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/fruitsAndVeggiesBT.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toFrozen" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/frozen.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toDrinks" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/DrinksBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toSnacks" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/snacksBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toHygiene" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/hygieneBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toLaundry" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/laundryBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toOther" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/otherBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" prefHeight="67.0" prefWidth="260.0">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#toConfigurations" prefHeight="45.0" prefWidth="226.0" styleClass="transparent" stylesheets="@../style/style.css">
+                                             <graphic>
+                                                <ImageView fitHeight="37.0" fitWidth="208.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../Images/configurationsBt.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
