@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,6 +29,14 @@ public class JoinFamilyGUI {
             controller.joinFamily(txtEmail.getText());
             controller.toMainPage(event);
         }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Login failed");
+            alert.setTitle("Error Message");
+            alert.setContentText("Incorrect email or pin.");
+            alert.showAndWait();
+        }
+
     }
 
     public void back(ActionEvent event) throws IOException {

@@ -20,6 +20,10 @@ public class CategoryPageController {
     public List<FamilyProduct> getFamilyProductsByCategory(String categoryName) {
         return company.getFamilyProductByCategory(categoryName);
     }
+
+    public void checkBuyOption(FamilyProduct product, int buy) {
+        company.checkBuyOptions(product, buy);
+    }
 }
 
 

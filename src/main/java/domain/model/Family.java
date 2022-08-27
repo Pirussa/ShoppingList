@@ -4,11 +4,11 @@ import java.util.Random;
 
 public class Family {
 
-    String id;
-    String name;
-    int members;
-    int adminId;
-    String password;
+    private String id;
+    private String name;
+    private int members;
+    private int adminId;
+    private String password;
 
     public Family(int adminId) {
         this.adminId = adminId;

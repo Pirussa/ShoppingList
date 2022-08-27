@@ -28,7 +28,7 @@ public class CreateFamilyGUI {
 
     @FXML
     void createFamily(ActionEvent event) throws IOException {
-        if(controller.validateName(txtName.getText()) && controller.validatePasswords(txtPass1.getText(), txtPass2.getText())) {
+        if(controller.validatePasswords(txtPass1.getText(), txtPass2.getText())) {
             controller.createFamily(txtName.getText(), txtPass1.getText());
             controller.toMainPage(event);
         }

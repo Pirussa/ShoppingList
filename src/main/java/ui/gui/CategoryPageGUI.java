@@ -171,7 +171,8 @@ public class CategoryPageGUI {
         ObservableList<CategoryPageTableView> statsList = FXCollections.observableArrayList();
 
         for (FamilyProduct product : productList)
-            statsList.add(new CategoryPageTableView(product.toString(), product.getStock()));
+            statsList.add(new CategoryPageTableView(product));
+
 
         colCheckbox.setCellValueFactory(new PropertyValueFactory<>( "buy" ));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -180,8 +181,8 @@ public class CategoryPageGUI {
         ObservableList<CategoryPageTableView> list;
         if(productList.isEmpty()) {
             list = FXCollections.observableArrayList(
-                    new CategoryPageTableView("No products needed to buy", 0)
-            );
+                    new CategoryPageTableView(new FamilyProduct("1", 0, false)
+            ));
             tbProducts.setItems(list);
         }
         else

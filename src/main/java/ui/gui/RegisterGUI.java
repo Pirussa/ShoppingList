@@ -44,6 +44,7 @@ public class RegisterGUI {
         if(!controller.validateEmail(email)) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid email");
+            alert.setTitle("Error Message");
             alert.setContentText("The introduced email is invalid.");
             alert.showAndWait();
             return false;
@@ -53,6 +54,7 @@ public class RegisterGUI {
         if(!controller.validateName(name)) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Name");
+            alert.setTitle("Error Message");
             alert.setContentText("The name mustn't contain any number");
             alert.showAndWait();
             return false;
@@ -62,6 +64,7 @@ public class RegisterGUI {
         if(!controller.validatePin(pin, pinConfirmation)) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid pin");
+            alert.setTitle("Error Message");
             alert.setContentText("The pin must be a four digit number");
             alert.showAndWait();
             return false;

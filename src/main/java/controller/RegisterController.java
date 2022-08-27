@@ -16,55 +16,27 @@ public class RegisterController {
 
 
 
-
-    private boolean emailExitsOnTheDB(String email) {
-        return company.emailExitsOnTheDB(email);
-    }
-
-    private boolean validateEmailFormat(String email) {
-        return company.validateEmailFormat(email);
-    }
-
     public boolean validateEmail(String email) {
-        if(emailExitsOnTheDB(email))
-            return false;
-
-        return validateEmailFormat(email);
+        return company.validateEmail(email);
     }
-
 
 
     public boolean validateName(String name) {
         return company.validateName(name);
     }
 
-    private boolean pinMatch(int pin, int pinConfirmation) {
-        return company.pinMatch(pin, pinConfirmation);
-    }
-
-    private boolean fourDigitPinCheck(int pin) {
-        return company.fourDigitPinCheck(pin);
-    }
-
-    private boolean checkEmpty(String pin, String pinConfirmation) {
-        return company.checkEmpty(pin, pinConfirmation);
-    }
-
-    private boolean checkIfIsInteger(String pin) {
-        return company.checkIfIsInteger(pin);
-    }
 
     public boolean validatePin(String pin, String pinConfirmation) {
-        if(checkEmpty(pin, pinConfirmation))
+        if(company.checkEmpty(pin, pinConfirmation))
             return false;
 
-        if(checkIfIsInteger(pin))
+        if(company.checkIfIsInteger(pin))
             return false;
 
-        if (!pinMatch(Integer.parseInt(pin), Integer.parseInt(pinConfirmation)))
+        if (!company.pinMatch(Integer.parseInt(pin), Integer.parseInt(pinConfirmation)))
             return false;
 
-        return fourDigitPinCheck(Integer.parseInt(pin));
+        return company.fourDigitPinCheck(Integer.parseInt(pin));
     }
 
     public void registerUser(String email, String name, int pin) {

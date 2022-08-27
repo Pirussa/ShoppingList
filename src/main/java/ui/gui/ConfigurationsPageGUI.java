@@ -38,7 +38,7 @@ public class ConfigurationsPageGUI {
 
     @FXML
     void familyOptions(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/familyOptions.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/editFamily.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

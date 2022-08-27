@@ -2,7 +2,7 @@ package domain.model;
 
 import domain.shared.Utils;
 
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -67,11 +67,7 @@ public class Company {
         try {
             utils.pst = utils.conn.prepareStatement("UPDATE users SET FamilyId = '" + familyId + "' WHERE email = '" + user.getEmail() + "'");
             utils.pst.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
 
-        try {
             utils.pst = utils.conn.prepareStatement("UPDATE family SET Members = '" + members + "' WHERE id = '" + getUsersFamilyId(adminEmail) + "'");
             utils.pst.executeUpdate();
         } catch (SQLException e) {
@@ -94,7 +90,7 @@ public class Company {
 
     private int getFamilyAdminId(String familyId) {
         try {
-            utils.pst = utils.conn.prepareStatement("SELECT AdminId FROM family WHERE Id = '" + familyId + "'");
+            utils.pst = utils.conn.prepareStatement("SELECT adminId FROM family WHERE Id = '" + familyId + "'");
             utils.rs = utils.pst.executeQuery();
 
             if (utils.rs.next())
@@ -103,6 +99,34 @@ public class Company {
             throw new RuntimeException(e);
         }
         return 0;
+    }
+
+    private String getFamilyAdminEmail(int adminId) {
+        try {
+            String query = "SELECT email FROM users WHERE id = '" + adminId + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.rs = utils.pst.executeQuery();
+
+            if (utils.rs.next())
+                return utils.rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    private String getFamilyStringInfo(String familyId, String info) {
+        try {
+            String query = "SELECT " + info + " FROM family WHERE id = '" + familyId + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.rs = utils.pst.executeQuery();
+
+            if (utils.rs.next())
+                return utils.rs.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
 
@@ -149,6 +173,14 @@ public class Company {
 
         return false;
     }
+
+    public boolean validateEmail(String email) {
+        if(emailExitsOnTheDB(email))
+            return false;
+
+        return validateEmailFormat(email);
+    }
+
 
 
     public boolean validateName(String name) {
@@ -238,6 +270,7 @@ public class Company {
         return null;
     }
 
+
     public String getUsersFamilyId() {
         try {
             utils.pst = utils.conn.prepareStatement("SELECT FamilyId FROM users WHERE email = '" + user.getEmail() + "'");
@@ -288,8 +321,6 @@ public class Company {
     }
 
 
-
-
     public void createProduct(String cBoxValue, String txtName, String txtPrice) {
         try {
             utils.pst = utils.conn.prepareStatement("INSERT INTO product(id, name, price, categoryName) VALUES('" + productIdGenerator(cBoxValue) + "', '" + txtName + "', '" + txtPrice + "', '" + cBoxValue + "')");
@@ -337,8 +368,7 @@ public class Company {
                 throw new RuntimeException(e);
             }
 
-        }
-        else {
+        } else {
             try {
                 utils.pst = utils.conn.prepareStatement("SELECT id, name, price FROM product");
                 utils.rs = utils.pst.executeQuery();
@@ -366,10 +396,7 @@ public class Company {
             utils.rs = utils.pst.executeQuery();
 
             while (utils.rs.next()) {
-                if (Integer.parseInt(utils.rs.getString(3)) == 0)
-                    checkedProducts.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), false));
-                else
-                    checkedProducts.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), true));
+                checkedProducts.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), true));
             }
 
             return checkedProducts;
@@ -385,7 +412,7 @@ public class Company {
             utils.pst = utils.conn.prepareStatement("SELECT name FROM product WHERE id = '" + productId + "'");
             utils.rs = utils.pst.executeQuery();
 
-            if(utils.rs.next())
+            if (utils.rs.next())
                 return utils.rs.getString(1);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -422,36 +449,31 @@ public class Company {
     public List<FamilyProduct> getFamilyProductByCategory(String categoryName) {
         List<FamilyProduct> familyProductsList = new ArrayList<>();
 
+
         try {
+            ResultSet rsID;
             String query = "SELECT productId FROM " + user.getFamilyId();
             utils.pst = utils.conn.prepareStatement(query);
-            utils.rs = utils.pst.executeQuery();
+            rsID = utils.pst.executeQuery();
 
-            while (utils.rs.next()) {
+            while (rsID.next()) {
 
-                try {
-                    utils.pst = utils.conn.prepareStatement("SELECT id FROM product WHERE categoryName = '" + categoryName + "' AND id = '" + utils.rs.getString(1) + "'");
+                utils.pst = utils.conn.prepareStatement("SELECT id FROM product WHERE categoryName = '" + categoryName + "' AND id = '" + rsID.getString(1) + "'");
+                utils.rs = utils.pst.executeQuery();
+
+                if (utils.rs.next()) {
+                    query = "SELECT productId, stock, buy FROM " + user.getFamilyId() + " WHERE productId = " + "'" + rsID.getString(1) + "'";
+                    utils.pst = utils.conn.prepareStatement(query);
                     utils.rs = utils.pst.executeQuery();
 
-                    if(utils.rs.next())
-                        try {
-                            query = "SELECT productId, stock, buy FROM " + user.getFamilyId() + " WHERE productId = " + "'" + utils.rs.getString(1) + "'";
-                            utils.pst = utils.conn.prepareStatement(query);
-                            utils.rs = utils.pst.executeQuery();
-
-                            if(utils.rs.next()) {
-                                if (Integer.parseInt(utils.rs.getString(3)) == 0)
-                                    familyProductsList.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), false));
-                            } else
-                                familyProductsList.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), true));
-
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                    if (utils.rs.next()) {
+                        if (Integer.parseInt(utils.rs.getString(3)) == 0)
+                            familyProductsList.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), false));
+                        else
+                            familyProductsList.add(new FamilyProduct(utils.rs.getString(1), Integer.parseInt(utils.rs.getString(2)), true));
+                    }
                 }
+
             }
 
             return familyProductsList;
@@ -470,5 +492,154 @@ public class Company {
 
         if (utils.rs.next())
             System.out.println();
+    }
+
+    public void checkBuyOptions(FamilyProduct product, int buy) {
+        try {
+            String query = "UPDATE " + user.getFamilyId() +
+                    " SET buy = " + buy +
+                    " WHERE productId = '" + product.getProductId() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> getUsersInfo() {
+        List<String> list = new ArrayList<>();
+        list.add(getUsersName(user.getEmail()));
+        list.add(user.getEmail());
+        return list;
+    }
+
+    public void updateName(String name) {
+        try {
+            String query = "UPDATE users " +
+                    "SET name = '" + name + "'" +
+                    " WHERE email = '" + user.getEmail() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateEmail(String email) {
+        try {
+            String query = "UPDATE users " +
+                    "SET email = '" + email + "'" +
+                    " WHERE email = '" + user.getEmail() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+
+            user.setEmail(email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updatePin(int pin) {
+        try {
+            String query = "UPDATE users " +
+                    "SET pin = '" + pin + "'" +
+                    " WHERE email = '" + user.getEmail() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean verifyIfCanBeAdmin(String email) {
+        try {
+            String query = "SELECT familyId FROM users WHERE email = '" + email + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.rs = utils.pst.executeQuery();
+
+            if (!utils.rs.next())
+                return false;
+            else {
+                String familyId = utils.rs.getString(1);
+                query = "SELECT adminId FROM family WHERE id = '" + familyId + "'";
+                utils.pst = utils.conn.prepareStatement(query);
+                utils.rs = utils.pst.executeQuery();
+
+                if(utils.rs.next() && !familyId.equals(utils.rs.getString(1)))
+                    return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public void updateFamilysName(String name) {
+        try {
+            String query = "UPDATE family " +
+                    "SET name = '" + name + "'" +
+                    " WHERE id = '" + user.getFamilyId() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateFamilysEmail(String email) {
+        try {
+            String query = "UPDATE users " +
+                    "SET email = '" + email + "'" +
+                    " WHERE id = '" + getFamilyAdminId(family.getId()) + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateFamilysPassword(String password) {
+        try {
+            String query = "UPDATE family " +
+                    "SET password = '" + password + "'" +
+                    " WHERE id = '" + user.getFamilyId() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> getFamilysInfo() {
+        List<String> famiyInfo = new ArrayList<>();
+        famiyInfo.add(getFamilyStringInfo(user.getFamilyId(), "name"));
+        famiyInfo.add(getFamilyAdminEmail(getFamilyAdminId(user.getFamilyId())));
+        famiyInfo.add(getFamilyStringInfo(user.getFamilyId(), "password"));
+        return famiyInfo;
+    }
+
+    public void leaveFamily() {
+        try {
+            String query = "SELECT members FROM family WHERE id = '" + user.getFamilyId() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.rs = utils.pst.executeQuery();
+
+            int members = 0;
+            if (utils.rs.next()) {
+                members = Integer.parseInt(utils.rs.getString(1));
+                members--;
+            }
+
+            query = "UPDATE family SET members = " + members + " WHERE id = '" + user.getFamilyId() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+
+            query = "UPDATE users SET familyId = " + null + " WHERE email = '" + user.getEmail() + "'";
+            utils.pst = utils.conn.prepareStatement(query);
+            utils.pst.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

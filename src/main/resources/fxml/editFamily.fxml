@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.EditProfileGUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="310.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.gui.EditFamilyGUI">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" stylesheets="@../style/style.css" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="194.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right, #a4d8ff, #7dc4ff);;">
+            <HBox alignment="CENTER_LEFT" prefHeight="194.0" prefWidth="310.0" style="-fx-background-color: linear-gradient(to right, #c2a3ff, #897dff);">
                <children>
-                  <HBox prefHeight="167.0" prefWidth="95.0">
+                  <HBox prefHeight="194.0" prefWidth="78.0">
                      <children>
                         <Button focusTraversable="false" mnemonicParsing="false" onAction="#back" styleClass="transparent">
                            <graphic>
@@ -33,12 +33,12 @@
                            </HBox.margin>
                         </Button>
                      </children></HBox>
-                  <VBox prefHeight="167.0" prefWidth="120.0">
+                  <VBox prefHeight="194.0" prefWidth="162.0">
                      <children>
-                        <HBox prefHeight="37.0" prefWidth="120.0" />
-                        <ImageView fitHeight="137.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox prefHeight="28.0" prefWidth="162.0" />
+                        <ImageView fitHeight="155.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/mostroFundoBranco.png" />
+                              <Image url="@../Images/familyMonsters.png" />
                            </image>
                         </ImageView>
                      </children>
@@ -46,9 +46,9 @@
                </children></HBox>
             <HBox alignment="BOTTOM_LEFT" prefHeight="61.0" prefWidth="310.0">
                <children>
-                  <Label style="-fx-text-fill: #58a0de;" styleClass="subtitle" text="Personal Information">
+                  <Label style="-fx-text-fill: #897dff;" styleClass="subtitle" text="Family's Information">
                      <HBox.margin>
-                        <Insets left="14.0" />
+                        <Insets left="15.0" />
                      </HBox.margin>
                      <font>
                         <Font size="17.0" />
@@ -63,7 +63,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="80.0" prefWidth="66.0" />
+                  <HBox prefHeight="80.0" prefWidth="65.0" />
                   <TextField fx:id="txtName" alignment="CENTER_RIGHT" focusTraversable="false" prefHeight="25.0" prefWidth="149.0" promptText="Pedro Monteiro" styleClass="transparent" />
                   <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
                      <graphic>
@@ -83,8 +83,8 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="80.0" prefWidth="46.0" />
-                  <TextField fx:id="txtEmail" alignment="CENTER_RIGHT" focusTraversable="false" prefHeight="25.0" prefWidth="172.0" promptText="ampedro2003@gmail.com" styleClass="transparent" />
+                  <HBox prefHeight="80.0" prefWidth="54.0" />
+                  <TextField fx:id="txtEmail" alignment="CENTER_RIGHT" focusTraversable="false" prefHeight="25.0" prefWidth="163.0" promptText="ampedro2003@gmail.com" styleClass="transparent" />
                   <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
@@ -98,12 +98,12 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="80.0" prefWidth="310.0">
                <children>
-                  <Label styleClass="lables" text="Pin">
+                  <Label styleClass="lables" text="Password">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <HBox prefHeight="80.0" prefWidth="126.0" />
+                  <HBox prefHeight="80.0" prefWidth="86.0" />
                   <PasswordField fx:id="txtPin" alignment="CENTER_RIGHT" focusTraversable="false" prefHeight="25.0" prefWidth="106.0" promptText="****" styleClass="transparent" />
                   <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="39.0" styleClass="transparent">
                      <graphic>
@@ -116,9 +116,21 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="310.0">
+            <HBox prefHeight="72.0" prefWidth="310.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#save" prefHeight="43.0" prefWidth="110.0" styleClass="blue-buttons" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#save" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: linear-gradient(to right, #c2a3ff, #897dff);" styleClass="blue-buttons" text="Save">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="81.0" prefWidth="310.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#leaveFamily" styleClass="red-buttons" text="Leave Family">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>

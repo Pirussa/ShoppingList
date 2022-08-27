@@ -51,7 +51,9 @@ public class User {
         this.familyId = familyId;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-
-    // put here all the validations
+// put here all the validations
 }

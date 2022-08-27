@@ -23,7 +23,6 @@ public class MainPageGUI  {
     MainPageController controller;
 
 
-
     public void setController(MainPageController controller) {
         this.controller = controller;
     }
@@ -45,6 +44,8 @@ public class MainPageGUI  {
 
     @FXML
     private TableColumn<MainPageTableView, Integer> colQuantiy;
+
+    ObservableList<MainPageTableView> statsList;
 
     @FXML
     private HBox mainHBox;
@@ -123,6 +124,16 @@ public class MainPageGUI  {
     }
 
 
+    @FXML
+    void clearChecks(ActionEvent event) {
+        List<FamilyProduct> productList = controller.getFamilyProductsChecked();
+
+        for (MainPageTableView object : statsList)
+            if(object.getBuy().isSelected())
+               //checkedProducts.add(object);
+                System.out.println();
+
+    }
 
 
 
@@ -155,10 +166,10 @@ public class MainPageGUI  {
         mainHBox.setStyle("-fx-background-color: #ffd4bd");
 
         List<FamilyProduct> productList = controller.getFamilyProductsChecked();
-        ObservableList<MainPageTableView> statsList = FXCollections.observableArrayList();
+        statsList = FXCollections.observableArrayList();
 
         for (FamilyProduct product : productList)
-            statsList.add(new MainPageTableView(product.toString(), product.getStock()));
+            statsList.add(new MainPageTableView(product));
 
 
         colCheckbox.setCellValueFactory(new PropertyValueFactory<>( "buy" ));
@@ -168,7 +179,7 @@ public class MainPageGUI  {
         ObservableList<MainPageTableView> list;
         if(productList.isEmpty()) {
             list = FXCollections.observableArrayList(
-                    new MainPageTableView("No products needed to buy", 0)
+                    new MainPageTableView(new FamilyProduct("1", 0, false))
             );
             tbProducts.setItems(list);
         }

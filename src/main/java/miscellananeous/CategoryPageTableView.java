@@ -1,18 +1,33 @@
 package miscellananeous;
 
+import controller.*;
+import domain.model.*;
 import javafx.beans.property.*;
 import javafx.scene.control.*;
 
 public class CategoryPageTableView {
 
+    CategoryPageController controller;
+
     private final SimpleStringProperty name;
     private final SimpleIntegerProperty stock;
     private CheckBox buy;
 
-    public CategoryPageTableView(String name, int stock) {
-        this.name = new SimpleStringProperty(name);
-        this.stock = new SimpleIntegerProperty(stock);
+    public CategoryPageTableView(FamilyProduct product) {
+        this.name = new SimpleStringProperty(product.toString());
+        this.stock = new SimpleIntegerProperty(product.getStock());
         this.buy = new CheckBox();
+        controller = new CategoryPageController();
+
+        buy.setSelected(product.getBuy());
+
+        buy.setOnAction(tc -> {
+            if (buy.isSelected())
+                controller.checkBuyOption(product, 1);
+            else
+                controller.checkBuyOption(product, 0);
+
+        });
     }
 
 

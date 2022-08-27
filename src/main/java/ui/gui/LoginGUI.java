@@ -59,12 +59,14 @@ public class LoginGUI implements Initializable  {
         if (controller.checkIfIsInteger(txtPin.getText())) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Invalid Pin");
+            alert.setTitle("Error Message");
             alert.setContentText("Only numbers are allowed on the PIN");
             alert.showAndWait();
         }
         else if (!controller.validateLogin(txtEmail.getText(), Integer.parseInt(txtPin.getText()))) {
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Login failed");
+            alert.setTitle("Error Message");
             alert.setContentText("Incorrect email or pin.");
             alert.showAndWait();
         }

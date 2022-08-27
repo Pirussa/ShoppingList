@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import ui.gui.*;
 
 import java.io.IOException;
 
@@ -25,7 +26,13 @@ public class JoinFamilyController {
 
 
     public void toMainPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainPage.fxml"));
+        Parent root;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainPage.fxml"));
+        root = loader.load();
+
+        MainPageGUI mainScene = loader.getController();
+        mainScene.setController(new MainPageController());
+        mainScene.setStatsTable();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -1,7 +1,11 @@
 package domain.shared;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.stage.*;
+
+import java.awt.event.*;
+import java.io.*;
 import java.sql.*;
 import java.util.List;
 import java.util.Scanner;
@@ -101,4 +105,5 @@ public class Utils {
         System.out.printf("%22s%n", title);
         dash();
     }
+
 }

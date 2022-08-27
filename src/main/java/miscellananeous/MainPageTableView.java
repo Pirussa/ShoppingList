@@ -1,5 +1,6 @@
 package miscellananeous;
 
+import domain.model.*;
 import javafx.beans.property.*;
 import javafx.scene.control.*;
 
@@ -9,9 +10,9 @@ public class MainPageTableView {
     private final SimpleIntegerProperty stock;
     private CheckBox buy;
 
-    public MainPageTableView(String name, int stock) {
-        this.name = new SimpleStringProperty(name);
-        this.stock = new SimpleIntegerProperty(stock);
+    public MainPageTableView(FamilyProduct product) {
+        this.name = new SimpleStringProperty(product.toString());
+        this.stock = new SimpleIntegerProperty(product.getStock());
         this.buy = new CheckBox();
 
         buy.setOnAction(tc -> {
