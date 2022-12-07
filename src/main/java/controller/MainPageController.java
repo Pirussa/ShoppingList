@@ -33,4 +33,8 @@ public class MainPageController {
     public void checkProduct() throws SQLException {
         company.checkProduct();
     }
+
+    public void checkBuyOption(FamilyProduct product, int buy) {
+        company.checkBuyOptions(product, buy);
+    }
 }

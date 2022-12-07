@@ -1,10 +1,13 @@
 package miscellananeous;
 
+import controller.MainPageController;
 import domain.model.*;
 import javafx.beans.property.*;
 import javafx.scene.control.*;
 
 public class MainPageTableView {
+
+    MainPageController controller;
 
     private final SimpleStringProperty name;
     private final SimpleIntegerProperty stock;
@@ -14,6 +17,7 @@ public class MainPageTableView {
         this.name = new SimpleStringProperty(product.toString());
         this.stock = new SimpleIntegerProperty(product.getStock());
         this.buy = new CheckBox();
+        controller = new MainPageController();
 
         buy.setOnAction(tc -> {
             if (buy.isSelected())
